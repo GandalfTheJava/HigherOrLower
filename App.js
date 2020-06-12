@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import Header from './components/header/header';
 export default function App() {
   let [score, setScore] = useState(1);
   let [previousNumber, setPreviousNumber] = useState();
@@ -49,17 +49,19 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.headerTitle}>High or Lower?</Text>
-        </View>
-        <View style={styles.bodyContainer}>
-          <Text>Current score is {score}</Text>
-          <Text>Current number is {number}</Text>
-        </View>
+      <Header />
+      <View style={styles.bodyContainer}>
+        <Text>Current score is {score}</Text>
+        <Text>Current number is {number}</Text>
       </View>
-      <Button onPress={() => nextRound('Lower')} title="Lower" />
-      <Button onPress={() => nextRound('Higher')} title="Higher" />
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity styles={styles.lowerButton} onPress={() => nextRound('Lower')}>
+          <Text>Lower</Text>
+        </TouchableOpacity>
+        <TouchableOpacity styles={styles.higherButton} onPress={() => nextRound('Higher')}>
+          <Text>Higher</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -67,26 +69,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-    height: '100%'
-  },
-  header: {
-    width: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    alignContent: 'flex-start',
-    flexDirection: 'column',
-    backgroundColor: 'red'
-  },
-  headerTitle: {
-    fontWeight: 'bold',
-    justifyContent: 'center',
-    fontSize: 15
+    flexDirection: 'column'
   },
   bodyContainer: {
-    height: '90vh'
-  }
+    backgroundColor: '#ffcd3c',
+  },
+  lowerButton: {
+    backgroundColor: '#35d0ba'
+  },
+  higherButton: {
+    backgroundColor: '#d92027'
+  },
 });
