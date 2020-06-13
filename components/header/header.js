@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column',
         backgroundColor: '#f4f4f4',
-        marginBottom: 25
+        marginBottom: 20
     },
     title: {
         fontWeight: 'bold',

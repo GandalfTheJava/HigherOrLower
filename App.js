@@ -50,17 +50,25 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      <View style={styles.bodyContainer}>
-        <Text>Current score is {score}</Text>
-        <Text>Current number is {number}</Text>
+      <View>
+        <Text>Current score: {score}</Text>
       </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity styles={styles.lowerButton} onPress={() => nextRound('Lower')}>
-          <Text>Lower</Text>
-        </TouchableOpacity>
-        <TouchableOpacity styles={styles.higherButton} onPress={() => nextRound('Higher')}>
-          <Text>Higher</Text>
-        </TouchableOpacity>
+      <View style={styles.bodyContainer}>
+        <View style={styles.gameContainer}>
+          <View>
+            <TouchableOpacity style={styles.lowerButton} onPress={() => nextRound('Lower')}>
+              <Text>Lower</Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text style={styles.numberContainer}>{number}</Text>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.higherButton} onPress={() => nextRound('Higher')}>
+              <Text>Higher</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -70,16 +78,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     flexDirection: 'column'
   },
   bodyContainer: {
-    backgroundColor: '#ffcd3c',
+    backgroundColor: '#f4f4f4',
+    flexDirection: 'column',
+    alignItems: 'center',
+    alignContent: 'center'
   },
-  lowerButton: {
-    backgroundColor: '#35d0ba'
+  gameContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 350,
+    height: '30vh',
+    alignItems: 'center'
   },
-  higherButton: {
-    backgroundColor: '#d92027'
-  },
+  numberContainer: {
+
+  }
 });
